@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Site Title</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style/style.css">
+
+</head>
+
+<body>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron pb-2">
+    <div class="container">
+      <div class="row">
+        <div class='col-12'>
+          <h1 class="display-3">Booking Dr. James Smith</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Example row of columns -->
+<!--
+    <div class="container text-center mt-3 mb-4">
+      <h1 class="display-3">New Author</h1>
+    </div>
+-->
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row justify-content-center text-center">
+        <!-- MAY NEED TO CHANGE FORM ACTION URL AS ACCORDING TO ROUTES. THANKS -->
+        <form id="confirmationForm" action="/" method="get">
+          <div class="form-group">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="date" id="date" placeholder="Date">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="reason" id="reason" placeholder="Reason">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="details" id="details" placeholder="Details" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary createbut">Create</button>
+
+        </form>
+
+      </div>
+
+    <hr>
+
+    <footer>
+      <p>&copy; Company 2017</p>
+    </footer>
+  </div> <!-- /container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="../../dist/js/bootstrap.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+
+</html>
