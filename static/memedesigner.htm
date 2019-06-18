@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
 
   <title>MemeST</title>
 
@@ -15,18 +14,49 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    .filtr-item {
-      height: 100px;
 
-      border-radius: 3px;
-      border: solid 1px black;
-    }
-    @media (max-width: 575px) {
-    .row > [class*="col-"] {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
+  .grid__brick img
+  {
+    height: 150px;
   }
+    @media (max-width: 575px) {
+      .row>[class*="col-"] {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+
+.wp-caption {
+position: relative;
+padding: 0;
+margin: 0;
+}
+.wp-caption:after {
+content: "";
+position: absolute;
+display: block;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.6) 100%) repeat 0 0;
+z-index: 1;
+}
+.wp-caption-text {
+opacity: 1;
+position: absolute;
+width: 100%;
+color: #fff;
+left: 0;
+bottom: 0;
+padding: 0.75em 1em;
+font-weight: 700;
+z-index: 2;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+background-color: rgba(0,0,0,.7);
+}
+
   </style>
 
 </head>
@@ -63,91 +93,24 @@
     <h3>Select Your Meme</h3>
   </div>
   <div class="container pt-1">
-    <form>
-      <div class="form-group">
-        <input type="text" class="form-control" name="search" placeholder="Search..." data-search>
-      </div>
-    </form>
-  </div>
 
+      <div class="form-group">
+        <input type="search" class="form-control filter__search js-shuffle-search" name="search" placeholder="Search..." data-search>
+      </div>
+
+  </div>
 
   <div class="container pt-2" style="overflow-y:auto; overflow-x: none; max-height: 400px;">
     <!-- Example row of columns -->
 
-    <div class="row filtr-container mx-auto" style="padding: 0px;">
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
 
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
-      <div class="filtr-item" style="text-align: center;" data-category="1" data-sort="value">
-        <div style="position: relative;">
-          <img src="./sample.jpg" alt="sample">
-          <span style="position: absolute;bottom: 10px; left: 0px;">Doge Jr</span>
-        </div>
-      </div>
+    <div id="grid" class="row my-shuffle-container">
+      <figure class="grid__brick wp-caption col-xs mb-2" data-groups='["animal"]' data-date-created="2016-08-12" data-title="Crocodile">
+            <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">Crocodile</figcaption>
+      </figure>
+      <div class="col-1 my-sizer-element"></div>
+    </div>
 
   </div>
   </div> <!-- /container -->
@@ -158,11 +121,77 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="jquery.filterizr.min.js"></script>
+  <script src="./shuffle.min.js"></script>
   <script>
-    var filterizd = $('.filtr-container').filterizr({
-      //options object
-    });
+  'use strict';
+
+var Shuffle = window.Shuffle;
+
+var Demo = function (element) {
+  this.element = element;
+
+  this.shuffle = new Shuffle(element, {
+    itemSelector: '.grid__brick',
+    sizer: document.querySelector('.my-sizer-element'),
+    isCentered: true
+  });
+
+  // Log events.
+  this.addShuffleEventListeners();
+
+  this._activeFilters = [];
+
+  this.addSearchFilter();
+
+  this.mode = 'exclusive';
+};
+
+Demo.prototype.toggleMode = function () {
+  if (this.mode === 'additive') {
+    this.mode = 'exclusive';
+  } else {
+    this.mode = 'additive';
+  }
+};
+Demo.prototype.addShuffleEventListeners = function () {
+  this.shuffle.on(Shuffle.EventType.LAYOUT, function (data) {
+    console.log('layout. data:', data);
+  });
+
+  this.shuffle.on(Shuffle.EventType.REMOVED, function (data) {
+    console.log('removed. data:', data);
+  });
+};
+
+Demo.prototype.addSorting = function () {
+  var buttonGroup = document.querySelector('.sort-options');
+
+  if (!buttonGroup) {
+    return;
+  }
+
+  buttonGroup.addEventListener('change', this._handleSortChange.bind(this));
+};
+
+Demo.prototype.addSearchFilter = function () {
+  document.querySelector('.js-shuffle-search').addEventListener('keyup', this._handleSearchKeyup.bind(this));
+};
+// Filter the shuffle instance by items with a title that matches the search input.
+
+Demo.prototype._handleSearchKeyup = function (evt) {
+  var searchText = evt.target.value.toLowerCase();
+
+  this.shuffle.filter(function (element, shuffle) {
+    var titleElement = element.querySelector('.wp-caption-text');
+    var titleText = titleElement.textContent.toLowerCase().trim();
+    console.log(titleText);
+    return titleText.indexOf(searchText) !== -1;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  window.demo = new Demo(document.getElementById('grid'));
+});
   </script>
 </body>
 
