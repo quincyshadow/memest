@@ -1,48 +1,16 @@
 let query = `
-  CREATE TABLE public.doctor (
+  CREATE TABLE public.templates (
       id integer NOT NULL,
-      name text,
-      email text,
-      bio text,
-      img_url text,
-      password text
+      category string,
+      title string,
+      tags string,
+      thumbUrl string,
+      fullSzUrl string
   );
 
-  CREATE SEQUENCE public.doctor_id_seq
-      AS integer
-      START WITH 1
-      INCREMENT BY 1
-      NO MINVALUE
-      NO MAXVALUE
-      CACHE 1;
-
-  ALTER SEQUENCE public.doctor_id_seq OWNED BY public.doctor.id;
-
-  CREATE TABLE public.appointment (
-      id integer NOT NULL,
-      doctor_id integer,
-      name text,
-      date text,
-      reason text,
-      details text,
-      status text
-  );
-
-  CREATE SEQUENCE public.appointment_id_seq
-      AS integer
-      START WITH 1
-      INCREMENT BY 1
-      NO MINVALUE
-      NO MAXVALUE
-      CACHE 1;
-
-  ALTER SEQUENCE public.appointment_id_seq OWNED BY public.appointment.id;
-
-  CREATE TABLE public.note (
-      id integer NOT NULL,
-      appointment_id integer,
-      comment text
-  );
+ /* id,category,title,tags,thumbUrl,fullSzUrl
+    int,string*****
+ */
 
   CREATE SEQUENCE public.note_id_seq
       AS integer
@@ -52,30 +20,29 @@ let query = `
       NO MAXVALUE
       CACHE 1;
 
-
   ALTER SEQUENCE public.note_id_seq OWNED BY public.note.id;
-
-  ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
-
-  ALTER TABLE ONLY public.appointment ALTER COLUMN id SET DEFAULT nextval('public.appointment_id_seq'::regclass);
 
   ALTER TABLE ONLY public.note ALTER COLUMN id SET DEFAULT nextval('public.note_id_seq'::regclass);
 
-  ALTER TABLE ONLY public.doctor
-      ADD CONSTRAINT doctor_pkey PRIMARY KEY (id);
-
-  ALTER TABLE ONLY public.appointment
-      ADD CONSTRAINT appointment_pkey PRIMARY KEY (id);
-
   ALTER TABLE ONLY public.note
-      ADD CONSTRAINT note_pkey PRIMARY KEY (id);
-
-  ALTER TABLE public.note
-      ADD CONSTRAINT fkey
-      FOREIGN KEY (appointment_id)
-      REFERENCES public.appointment (id)
-      ON DELETE CASCADE;
+  ADD CONSTRAINT note_pkey PRIMARY KEY (id);
 `
+
+  // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
+  //
+  // ALTER TABLE ONLY public.appointment ALTER COLUMN id SET DEFAULT nextval('public.appointment_id_seq'::regclass);
+
+// ALTER TABLE ONLY public.appointment
+//     ADD CONSTRAINT appointment_pkey PRIMARY KEY (id);
+//
+// ALTER TABLE ONLY public.note
+//     ADD CONSTRAINT note_pkey PRIMARY KEY (id);
+//
+// ALTER TABLE public.note
+//     ADD CONSTRAINT fkey
+//     FOREIGN KEY (appointment_id)
+//     REFERENCES public.appointment (id)
+//     ON DELETE CASCADE;
 
 query = query.replace(/\n/g, '').replace(/\t/g, ' ');
 //TODO: ADD replace any commented line starting with - with blank line

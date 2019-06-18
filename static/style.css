@@ -8,3 +8,17 @@
 {
   height:200px;
 }
+.grid__brick
+{
+  border:2px solid white;
+}
+.imgselected
+{
+  border:2px solid red;
+}
+.templator {
+  background-image: url("xv.png");
+  background-repeat: repeat;
+  background-color: #B7B9B8;
+  color: black;
+}

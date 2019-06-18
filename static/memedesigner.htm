@@ -14,11 +14,35 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
+    canvas#c {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
 
-  .grid__brick img
-  {
-    height: 150px;
-  }
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .canvas-container:before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+      /* initial ratio of 1:1*/
+    }
+
+    .ezfill {
+      display: inline-block;
+    }
+
+    .grid__brick img {
+      height: 150px;
+    }
+
     @media (max-width: 575px) {
       .row>[class*="col-"] {
         padding-left: 8px;
@@ -26,37 +50,38 @@
       }
     }
 
-.wp-caption {
-position: relative;
-padding: 0;
-margin: 0;
-}
-.wp-caption:after {
-content: "";
-position: absolute;
-display: block;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.6) 100%) repeat 0 0;
-z-index: 1;
-}
-.wp-caption-text {
-opacity: 1;
-position: absolute;
-width: 100%;
-color: #fff;
-left: 0;
-bottom: 0;
-padding: 0.75em 1em;
-font-weight: 700;
-z-index: 2;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
-background-color: rgba(0,0,0,.7);
-}
+    .wp-caption {
+      position: relative;
+      padding: 0;
+      margin: 0;
+    }
 
+    .wp-caption:after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.6) 100%) repeat 0 0;
+      z-index: 1;
+    }
+
+    .wp-caption-text {
+      opacity: 1;
+      position: absolute;
+      width: 100%;
+      color: #fff;
+      left: 0;
+      bottom: 0;
+      padding: 0.75em 1em;
+      font-weight: 700;
+      z-index: 2;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, .7);
+    }
   </style>
 
 </head>
@@ -89,14 +114,54 @@ background-color: rgba(0,0,0,.7);
       </ul>
     </div>
   </nav>
+  <div class="container-fluid pt-3 templator">
+    <div class="container">
+      <div class="row clearfix">
+
+        <div class="col-sm">
+          <canvas id="c" width="900" height="900" class="border ezfill"></canvas>
+
+          <button type="submit" id="savepng" class="mb-2 btn btn-primary float-right">Save as PNG</button>
+        </div>
+
+        <div class="col-sm">
+          <p>Let's not waste any time. Get to meming.</p>
+          <form>
+            <form class>
+              <div class="form-group mb-1">
+                <input type="text" class="form-control" id="toptext" aria-describedby="toptext" placeholder="Top Text">
+              </div>
+              <div class="form-group mb-1">
+                <input type="text" class="form-control" id="bottomtext" aria-describedby="bottomtext" placeholder="Bottom Text">
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">1</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">2</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+              </div>
+              <button type="submit" class="btn btn-primary float-right">Submit</button>
+            </form>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
   <div class="container pt-3">
     <h3>Select Your Meme</h3>
   </div>
   <div class="container pt-1">
 
-      <div class="form-group">
-        <input type="search" class="form-control filter__search js-shuffle-search" name="search" placeholder="Search..." data-search>
-      </div>
+    <div class="form-group">
+      <input type="search" class="form-control filter__search js-shuffle-search" name="search" placeholder="Search..." data-search>
+    </div>
 
   </div>
 
@@ -105,9 +170,46 @@ background-color: rgba(0,0,0,.7);
 
 
     <div id="grid" class="row my-shuffle-container">
-      <figure class="grid__brick wp-caption col-xs mb-2" data-groups='["animal"]' data-date-created="2016-08-12" data-title="Crocodile">
-            <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
-        <figcaption class="wp-caption-text">Crocodile</figcaption>
+      <!--  data-groups='["animal"]' data-date-created="2016-08-12" data-title="Crocodile" -->
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="https://i.ibb.co/fG64xcF/samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="https://i.ibb.co/fG64xcF/samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="http://res.cloudinary.com/xdoge/image/upload/c_thumb,g_face:center,h_900,q_auto,r_500,w_900/v1560891445/samples/ecommerce/leather-bag-gray.jpg">
+        <img src="http://res.cloudinary.com/xdoge/image/upload/c_thumb,g_face:center,h_900,q_auto,r_500,w_900/v1560891445/samples/ecommerce/leather-bag-gray.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
+      </figure>
+      <figure class="grid__brick wp-caption col-xs mb-2 jq_imgselection" canvassrc="./samplelg.jpg">
+        <img src="./samplelg.jpg" alt="A close, profile view of a crocodile looking directly into the camera" />
+        <figcaption class="wp-caption-text">One</figcaption>
       </figure>
       <div class="col-1 my-sizer-element"></div>
     </div>
@@ -122,76 +224,287 @@ background-color: rgba(0,0,0,.7);
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="./shuffle.min.js"></script>
+  <script src="js/fabric.js"></script>
+  <!-- PLEASE MINIFY THIS JS, YOU CAN REMOVE UNEEDED ITEMS ON THE SITE FABRIC JS -->
   <script>
-  'use strict';
+    'use strict';
 
-var Shuffle = window.Shuffle;
+    var Shuffle = window.Shuffle;
 
-var Demo = function (element) {
-  this.element = element;
+    var Demo = function(element) {
+      this.element = element;
 
-  this.shuffle = new Shuffle(element, {
-    itemSelector: '.grid__brick',
-    sizer: document.querySelector('.my-sizer-element'),
-    isCentered: true
-  });
+      this.shuffle = new Shuffle(element, {
+        itemSelector: '.grid__brick',
+        sizer: document.querySelector('.my-sizer-element'),
+        isCentered: true
+      });
 
-  // Log events.
-  this.addShuffleEventListeners();
+      // Log events.
+      this.addShuffleEventListeners();
 
-  this._activeFilters = [];
+      this._activeFilters = [];
 
-  this.addSearchFilter();
+      this.addSearchFilter();
 
-  this.mode = 'exclusive';
+      this.mode = 'exclusive';
+    };
+
+    Demo.prototype.toggleMode = function() {
+      if (this.mode === 'additive') {
+        this.mode = 'exclusive';
+      } else {
+        this.mode = 'additive';
+      }
+    };
+    Demo.prototype.addShuffleEventListeners = function() {
+      this.shuffle.on(Shuffle.EventType.LAYOUT, function(data) {
+        console.log('layout. data:', data);
+      });
+
+      this.shuffle.on(Shuffle.EventType.REMOVED, function(data) {
+        console.log('removed. data:', data);
+      });
+    };
+
+    Demo.prototype.addSorting = function() {
+      var buttonGroup = document.querySelector('.sort-options');
+
+      if (!buttonGroup) {
+        return;
+      }
+
+      buttonGroup.addEventListener('change', this._handleSortChange.bind(this));
+    };
+
+    Demo.prototype.addSearchFilter = function() {
+      document.querySelector('.js-shuffle-search').addEventListener('keyup', this._handleSearchKeyup.bind(this));
+    };
+    // Filter the shuffle instance by items with a title that matches the search input.
+
+    Demo.prototype._handleSearchKeyup = function(evt) {
+      var searchText = evt.target.value.toLowerCase();
+
+      this.shuffle.filter(function(element, shuffle) {
+        var titleElement = element.querySelector('.wp-caption-text');
+        var titleText = titleElement.textContent.toLowerCase().trim();
+
+
+        console.log(titleText);
+        return titleText.indexOf(searchText) !== -1;
+
+        //Past the mvp allow to sort further by keyword or group,
+        //see var groupA = JSON.parse(a.element.getAttribute('data-groups'))[0]
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      window.demo = new Demo(document.getElementById('grid'));
+
+      // reference canvas element (with id="c")
+      var canvas = new fabric.Canvas('c');
+
+//Extend the textbox object in fabricjs to allow parameters
+//'breakline'. https://jjwilly.com/fabric-js-2-0-breakwords-implementation/
+
+      var _wrapLine = function(_line, lineIndex, desiredWidth, reservedSpace) {
+    var lineWidth = 0,
+        splitByGrapheme = this.splitByGrapheme,
+        graphemeLines = [],
+        line = [],
+        // spaces in different languges?
+        words = splitByGrapheme ? fabric.util.string.graphemeSplit(_line) : _line.split(this._wordJoiners),
+        word = '',
+        offset = 0,
+        infix = splitByGrapheme ? '' : ' ',
+        wordWidth = 0,
+        infixWidth = 0,
+        largestWordWidth = 0,
+        lineJustStarted = true,
+        additionalSpace = splitByGrapheme ? 0 : this._getWidthOfCharSpacing();
+
+    reservedSpace = reservedSpace || 0;
+    desiredWidth -= reservedSpace;
+    for (var i = 0; i < words.length; i++) {
+        // i would avoid resplitting the graphemes
+        word = fabric.util.string.graphemeSplit(words[i]);
+        wordWidth = this._measureWord(word, lineIndex, offset);
+        offset += word.length;
+
+        // Break the line if a word is wider than the set width
+        if (this.breakWords && wordWidth >= desiredWidth) {
+
+        	if (!lineJustStarted) line.push(infix);
+
+            // Loop through each character in word
+            for (var w = 0; w < word.length; w++) {
+            	var letter = word[w];
+                var letterWidth = this.getMeasuringContext().measureText(letter).width * this.fontSize / this.CACHE_FONT_SIZE;
+                if (lineWidth + letterWidth > desiredWidth) {
+                	graphemeLines.push(line);
+                    line = [];
+                    lineWidth = 0;
+                } else {
+                	line.push(letter);
+                    lineWidth += letterWidth;
+                }
+            }
+            word = [];
+        } else {
+        	lineWidth += infixWidth + wordWidth - additionalSpace;
+        }
+
+        if (lineWidth >= desiredWidth && !lineJustStarted) {
+            graphemeLines.push(line);
+            line = [];
+            lineWidth = wordWidth;
+            lineJustStarted = true;
+        } else {
+            lineWidth += additionalSpace;
+        }
+
+        if (!lineJustStarted) {
+            line.push(infix);
+        }
+        line = line.concat(word);
+
+        infixWidth = this._measureWord([infix], lineIndex, offset);
+        offset++;
+        lineJustStarted = false;
+        // keep track of largest word
+        if (wordWidth > largestWordWidth && !this.breakWords) {
+            largestWordWidth = wordWidth;
+        }
+    }
+
+    i && graphemeLines.push(line);
+
+    if (largestWordWidth + reservedSpace > this.dynamicMinWidth) {
+        this.dynamicMinWidth = largestWordWidth - additionalSpace + reservedSpace;
+    }
+
+    return graphemeLines;
 };
 
-Demo.prototype.toggleMode = function () {
-  if (this.mode === 'additive') {
-    this.mode = 'exclusive';
-  } else {
-    this.mode = 'additive';
-  }
-};
-Demo.prototype.addShuffleEventListeners = function () {
-  this.shuffle.on(Shuffle.EventType.LAYOUT, function (data) {
-    console.log('layout. data:', data);
-  });
 
-  this.shuffle.on(Shuffle.EventType.REMOVED, function (data) {
-    console.log('removed. data:', data);
-  });
-};
-
-Demo.prototype.addSorting = function () {
-  var buttonGroup = document.querySelector('.sort-options');
-
-  if (!buttonGroup) {
-    return;
-  }
-
-  buttonGroup.addEventListener('change', this._handleSortChange.bind(this));
-};
-
-Demo.prototype.addSearchFilter = function () {
-  document.querySelector('.js-shuffle-search').addEventListener('keyup', this._handleSearchKeyup.bind(this));
-};
-// Filter the shuffle instance by items with a title that matches the search input.
-
-Demo.prototype._handleSearchKeyup = function (evt) {
-  var searchText = evt.target.value.toLowerCase();
-
-  this.shuffle.filter(function (element, shuffle) {
-    var titleElement = element.querySelector('.wp-caption-text');
-    var titleText = titleElement.textContent.toLowerCase().trim();
-    console.log(titleText);
-    return titleText.indexOf(searchText) !== -1;
-  });
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-  window.demo = new Demo(document.getElementById('grid'));
+fabric.util.object.extend(fabric.Textbox.prototype, {
+   _wrapLine: _wrapLine,
 });
+
+
+      canvas.setDimensions({
+        width: '100%',
+        height: 'auto'
+      }, {
+        cssOnly: true
+      });
+
+      canvas.set({
+        imageSmoothingEnabled: false,
+        enableRetinaScaling: false
+      });
+      var text = "Doge"
+      var fonts = ["Impact"];
+      let newtext = new fabric.Textbox(text, {
+        fontFamily: "Impact",
+        stroke: '#ffffff',
+        strokeWidth: 2,
+        fontSize: 100,
+        top: 50,
+        left: 0,
+        width: 900,
+        textAlign: 'center',
+        breakWords: true,
+      });
+
+      // $('#imgone').on('click', function() {
+      //   let canvas_bg_src = $(this).attr('canvassrc');
+      // })
+      //
+
+      let selections = [];
+      $('.jq_imgselection').each(function(index, element) {
+
+        selections.push(this);
+
+        $(this).on('click', function() {
+          $(selections).removeClass('imgselected');
+          let canvas_bg_src = $(this).attr('canvassrc');
+          $(this).attr('selected', 'true')
+          console.log(canvas_bg_src);
+          $(this).addClass('imgselected');
+
+          // fetch(canvas_bg_src)
+          // .then(function() {
+          //     console.log("ok");
+          // }).catch(function() {
+          //     console.log("error");
+          // });
+
+          fabric.Image.fromURL(canvas_bg_src, function(img) {
+            //Do not allow callback on err
+            if (img._element == null) {
+              console.error('errorcode')
+              return;
+            } else {
+              canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                left: 0,
+                top: 0,
+                width: 900,
+                height: 900
+              });
+              canvas.renderAll();
+            }
+          }, {
+            crossOrigin: 'Anonymous'
+          })
+
+        })
+      })
+
+      // backgroundImage
+
+      // changeAlign();
+
+      // function changeAlign() {
+      //   var val = align[Math.floor(Math.random() * align.length)];
+      //   text.set('textAlign', val);
+      //   el.innerHTML = 'Text Alignment : ' + val;
+      //   canvas.setActiveObject(text);
+      //   canvas.renderAll();
+      // }
+      canvas.add(newtext);
+
+      $('#toptext').keyup(function()
+        {
+          console.log($(this).val());
+          newtext.text = ($(this).val());
+          canvas.renderAll();
+        }
+      )
+
+      let toptextcv;
+      canvas.on('text:changed', function(e) {
+      toptextcv = newtext.text;
+      $('#toptext').val(toptextcv);
+    })
+
+      $('#savepng').on('click', function() {
+        //if(!window.localStorage){alert("This function is not supported by your browser."); return;}
+        //console.log(canvas.toDataURL())
+        var newTab = window.open();
+        var img = new Image();
+        newTab.document.write(`<h2>Right click, &#8618; Save image AS..`)
+
+        img.onload = function() {
+          newTab.document.body.append(img);
+          newTab.document.location.href = "#";
+        }
+        img.src = canvas.toDataURL();
+        newTab.document.close();
+      });
+
+    });
   </script>
 </body>
 
