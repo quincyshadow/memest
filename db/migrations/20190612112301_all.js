@@ -1,18 +1,18 @@
 let query = `
-  CREATE TABLE public.templates (
+  CREATE TABLE public.template (
       id integer NOT NULL,
-      category string,
-      title string,
-      tags string,
-      thumbUrl string,
-      fullSzUrl string
+      category text,
+      title text,
+      tags text,
+      thumbUrl text,
+      fullSzUrl text
   );
 
  /* id,category,title,tags,thumbUrl,fullSzUrl
     int,string*****
  */
 
-  CREATE SEQUENCE public.note_id_seq
+  CREATE SEQUENCE public.template_id_seq
       AS integer
       START WITH 1
       INCREMENT BY 1
@@ -20,12 +20,12 @@ let query = `
       NO MAXVALUE
       CACHE 1;
 
-  ALTER SEQUENCE public.note_id_seq OWNED BY public.note.id;
+  ALTER SEQUENCE public.template_id_seq OWNED BY public.template.id;
 
-  ALTER TABLE ONLY public.note ALTER COLUMN id SET DEFAULT nextval('public.note_id_seq'::regclass);
+  ALTER TABLE ONLY public.template ALTER COLUMN id SET DEFAULT nextval('public.template_id_seq'::regclass);
 
-  ALTER TABLE ONLY public.note
-  ADD CONSTRAINT note_pkey PRIMARY KEY (id);
+  ALTER TABLE ONLY public.template
+  ADD CONSTRAINT template_pkey PRIMARY KEY (id);
 `
 
   // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
@@ -65,11 +65,7 @@ exports.up = function(knex, Promise)
 ////////////////////////////////
 
 let drop = `
-DROP TABLE public.doctor CASCADE;
-
-DROP TABLE public.appointment CASCADE;
-
-DROP TABLE public.note CASCADE;
+DROP TABLE public.template CASCADE;
 `
 drop = drop.replace(/\n/g, '').replace(/\t/g, ' ');
 

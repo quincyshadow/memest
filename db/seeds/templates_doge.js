@@ -1,6 +1,6 @@
 // var cloudinary = require('cloudinary').v2;
 
-let table_name = 'templates'
+let table_name = 'template'
 //excluded column, 'id'.
 let column_name = `category,title,tags,thumbUrl,fullSzUrl`
 let images_obj = {
@@ -34,8 +34,10 @@ let queryLine = [];
 
 let thumbset = '';
 Object.keys(images_obj).forEach(e=>{
+  thumbset = 'w_900,h_900,c_fill/';
   let base_url = `https://res.cloudinary.com/xdoge/image/upload/${thumbset}`;
   let url_2 = 'v1560896231/dogetemplate/';
+  //"regular size is being filled up to 900x900 with aspect ratio maintained."
   let regularSizeImage = `${base_url}${url_2}${e}`;
   imageArr.push(regularSizeImage);
 
@@ -43,20 +45,20 @@ Object.keys(images_obj).forEach(e=>{
   let thumbnailImage = `${base_url}${url_2}${e}`
   thumbnailArr.push(thumbnailImage);
 
-  let templatestring = `'doge','${images_obj[e][0]}','${images_obj[e][1]}','${thumbnailImage}','${regularSizeImage}'`
+  let templatestring = `('doge','${images_obj[e][0]}','${images_obj[e][1]}','${thumbnailImage}','${regularSizeImage}')`
 
   let stripslashes = templatestring.replace(/\\/g, '')
 
   queryLine.push(stripslashes)
   })
 
- console.log(queryLine[0]);
+let fullquery = queryLine.join(',');
 
 let query = `
 delete from ${table_name};
 INSERT INTO ${table_name} (${column_name})
 values
-(1,'Doge','','','','')
+${fullquery};
 `
 
 query = query.replace(/\n/g, '').replace(/\t/g, ' ');

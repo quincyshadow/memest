@@ -2,11 +2,11 @@ const knex = require("../db/knex.js");
 
 module.exports = {
   // CHANGE ME TO AN ACTUAL FUNCTION
-  index: function(req, res) {
-    knex('doctor')
+  memeDesigner: function(req, res) {
+    knex('template')
       .then(results => {
-        res.render("index", {
-          doctors: results
+        res.render("memeDesigner", {
+          template: results
         });
       })
   },
