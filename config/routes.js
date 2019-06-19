@@ -1,9 +1,12 @@
 //Update the name of the controller below and rename the file.
 const template = require("../controllers/template.js")
+const meme = require("../controllers/meme.js")
 const users = require("../controllers/users.js")
 module.exports = function(app) {
   app.get('/', template.index);
   app.get('/meme_designer', template.memeDesignerGET);
+  //Post is for the publish meme feature.
+  app.post('/meme_designer', meme.memeDesignerPOST);
 }
 
 

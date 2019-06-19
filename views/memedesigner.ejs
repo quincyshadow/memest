@@ -7,40 +7,40 @@
         <div class="col-sm">
           <canvas id="c" width="900" height="900" class="border ezfill"></canvas>
 
-          <button type="submit" id="objectimplement" class="mb-2 btn btn-primary float-right">Object Testing</button>
-          <button type="submit" id="savepng" class="mb-2 btn btn-primary float-right">Direct Download</button>
+          <!-- <button type="submit" id="objectimplement" class="mb-2 btn btn-primary float-right">Object Testing</button>
+          -->
+          <button type="submit" id="savepng" class="mb-2 btn btn-success float-right">⤓ Direct Download</button>
         </div>
 
         <div class="col-sm">
           <p>Let's not waste any time. Get to meming.</p>
-          <form>
-            <form class>
-              <div class="form-group mb-1">
-                <input type="text" class="form-control" id="toptext" aria-describedby="toptext" placeholder="Top Text">
+          <form id="imgattr" action="" method="post">
+            <div class="form-group mb-1">
+              <input type="text" class="form-control" id="toptext" aria-describedby="toptext" placeholder="Top Text">
+            </div>
+            <div class="form-group mb-1">
+              <input type="text" class="form-control" id="bottomtext" aria-describedby="bottomtext" placeholder="Bottom Text">
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <label class="form-check-label" for="inlineCheckbox1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+              <label class="form-check-label" for="inlineCheckbox2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+              <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+            </div>
+            <div class="form-group row">
+              <label for="imagedl_size" class="col-sm-4 col-form-label">Dimensions</label>
+              <div class="col-sm-8 pt-2">
+                <input name="imgsize" class="form-control" id="imagedl_size" type="range" min="50" max="900" step="10" value="500" data-orientation="horizontal">
+                <input type="hidden" name="img64" id="img64">
               </div>
-              <div class="form-group mb-1">
-                <input type="text" class="form-control" id="bottomtext" aria-describedby="bottomtext" placeholder="Bottom Text">
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
-              </div>
-              <div class="form-group row">
-                <label for="imagedl_size" class="col-sm-4 col-form-label">Dimensions</label>
-                <div class="col-sm-8 pt-2">
-                  <input class="form-control" id="imagedl_size" type="range" min="50" max="900" step="10" value="500" data-orientation="horizontal">
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary float-right">Submit</button>
-            </form>
+            </div>
+            <button form="imgattr" type="submit" class="btn btn-primary float-right">Publish</button>
           </form>
         </div>
 
@@ -86,7 +86,7 @@
   <!-- Bootstrap core JavaScript
     ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="static/shuffle.min.js"></script>
@@ -167,294 +167,316 @@
 
     document.addEventListener('DOMContentLoaded', function() {
 
-          $("img").one("error", function() {
-            $(this).attr("src", "static/images/150.png");
-          });
+      //
+
+      ////// end form processor
 
 
-          let imagewidthslider = $('input[type="range"]');
+      $("img").one("error", function() {
+        $(this).attr("src", "static/images/150.png");
+      });
 
-          imagewidthslider.rangeslider({
-              polyfill: false,
-              onInit: function() {
-                var $handle = $('.rangeslider__handle', this.$range);
-                updateHandle($handle[0], this.value);
-              }
-            })
-            .on('input', function(e) {
-              var $handle = $('.rangeslider__handle', e.target.nextSibling);
-              updateHandle($handle[0], this.value);
-            });
 
-          function updateHandle(el, val) {
-            el.textContent = val;
+      let imagewidthslider = $('input[type="range"]');
+
+      imagewidthslider.rangeslider({
+          polyfill: false,
+          onInit: function() {
+            var $handle = $('.rangeslider__handle', this.$range);
+            updateHandle($handle[0], this.value);
           }
+        })
+        .on('input', function(e) {
+          var $handle = $('.rangeslider__handle', e.target.nextSibling);
+          updateHandle($handle[0], this.value);
+        });
 
-          window.demo = new Demo(document.getElementById('grid'));
+      function updateHandle(el, val) {
+        el.textContent = val;
+      }
 
-          // reference canvas element (with id="c")
-          var canvas = new fabric.Canvas('c', {
-            imageSmoothingEnabled: false,
-          });
+      window.demo = new Demo(document.getElementById('grid'));
 
-          //Extend the textbox object in fabricjs to allow parameters
-          //'breakline'. https://jjwilly.com/fabric-js-2-0-breakwords-implementation/
+      // reference canvas element (with id="c")
+      var canvas = new fabric.Canvas('c', {
+        imageSmoothingEnabled: false,
+      });
 
-          var _wrapLine = function(_line, lineIndex, desiredWidth, reservedSpace) {
-            var lineWidth = 0,
-              splitByGrapheme = this.splitByGrapheme,
-              graphemeLines = [],
-              line = [],
-              // spaces in different languges?
-              words = splitByGrapheme ? fabric.util.string.graphemeSplit(_line) : _line.split(this._wordJoiners),
-              word = '',
-              offset = 0,
-              infix = splitByGrapheme ? '' : ' ',
-              wordWidth = 0,
-              infixWidth = 0,
-              largestWordWidth = 0,
-              lineJustStarted = true,
-              additionalSpace = splitByGrapheme ? 0 : this._getWidthOfCharSpacing();
+      //Extend the textbox object in fabricjs to allow parameters
+      //'breakline'. https://jjwilly.com/fabric-js-2-0-breakwords-implementation/
 
-            reservedSpace = reservedSpace || 0;
-            desiredWidth -= reservedSpace;
-            for (var i = 0; i < words.length; i++) {
-              // i would avoid resplitting the graphemes
-              word = fabric.util.string.graphemeSplit(words[i]);
-              wordWidth = this._measureWord(word, lineIndex, offset);
-              offset += word.length;
+      var _wrapLine = function(_line, lineIndex, desiredWidth, reservedSpace) {
+        var lineWidth = 0,
+          splitByGrapheme = this.splitByGrapheme,
+          graphemeLines = [],
+          line = [],
+          // spaces in different languges?
+          words = splitByGrapheme ? fabric.util.string.graphemeSplit(_line) : _line.split(this._wordJoiners),
+          word = '',
+          offset = 0,
+          infix = splitByGrapheme ? '' : ' ',
+          wordWidth = 0,
+          infixWidth = 0,
+          largestWordWidth = 0,
+          lineJustStarted = true,
+          additionalSpace = splitByGrapheme ? 0 : this._getWidthOfCharSpacing();
 
-              // Break the line if a word is wider than the set width
-              if (this.breakWords && wordWidth >= desiredWidth) {
+        reservedSpace = reservedSpace || 0;
+        desiredWidth -= reservedSpace;
+        for (var i = 0; i < words.length; i++) {
+          // i would avoid resplitting the graphemes
+          word = fabric.util.string.graphemeSplit(words[i]);
+          wordWidth = this._measureWord(word, lineIndex, offset);
+          offset += word.length;
 
-                if (!lineJustStarted) line.push(infix);
+          // Break the line if a word is wider than the set width
+          if (this.breakWords && wordWidth >= desiredWidth) {
 
-                // Loop through each character in word
-                for (var w = 0; w < word.length; w++) {
-                  var letter = word[w];
-                  var letterWidth = this.getMeasuringContext().measureText(letter).width * this.fontSize / this.CACHE_FONT_SIZE;
-                  if (lineWidth + letterWidth > desiredWidth) {
-                    graphemeLines.push(line);
-                    line = [];
-                    lineWidth = 0;
-                  } else {
-                    line.push(letter);
-                    lineWidth += letterWidth;
-                  }
-                }
-                word = [];
-              } else {
-                lineWidth += infixWidth + wordWidth - additionalSpace;
-              }
+            if (!lineJustStarted) line.push(infix);
 
-              if (lineWidth >= desiredWidth && !lineJustStarted) {
+            // Loop through each character in word
+            for (var w = 0; w < word.length; w++) {
+              var letter = word[w];
+              var letterWidth = this.getMeasuringContext().measureText(letter).width * this.fontSize / this.CACHE_FONT_SIZE;
+              if (lineWidth + letterWidth > desiredWidth) {
                 graphemeLines.push(line);
                 line = [];
-                lineWidth = wordWidth;
-                lineJustStarted = true;
+                lineWidth = 0;
               } else {
-                lineWidth += additionalSpace;
-              }
-
-              if (!lineJustStarted) {
-                line.push(infix);
-              }
-              line = line.concat(word);
-
-              infixWidth = this._measureWord([infix], lineIndex, offset);
-              offset++;
-              lineJustStarted = false;
-              // keep track of largest word
-              if (wordWidth > largestWordWidth && !this.breakWords) {
-                largestWordWidth = wordWidth;
+                line.push(letter);
+                lineWidth += letterWidth;
               }
             }
+            word = [];
+          } else {
+            lineWidth += infixWidth + wordWidth - additionalSpace;
+          }
 
-            i && graphemeLines.push(line);
+          if (lineWidth >= desiredWidth && !lineJustStarted) {
+            graphemeLines.push(line);
+            line = [];
+            lineWidth = wordWidth;
+            lineJustStarted = true;
+          } else {
+            lineWidth += additionalSpace;
+          }
 
-            if (largestWordWidth + reservedSpace > this.dynamicMinWidth) {
-              this.dynamicMinWidth = largestWordWidth - additionalSpace + reservedSpace;
-            }
+          if (!lineJustStarted) {
+            line.push(infix);
+          }
+          line = line.concat(word);
 
-            return graphemeLines;
-          };
+          infixWidth = this._measureWord([infix], lineIndex, offset);
+          offset++;
+          lineJustStarted = false;
+          // keep track of largest word
+          if (wordWidth > largestWordWidth && !this.breakWords) {
+            largestWordWidth = wordWidth;
+          }
+        }
+
+        i && graphemeLines.push(line);
+
+        if (largestWordWidth + reservedSpace > this.dynamicMinWidth) {
+          this.dynamicMinWidth = largestWordWidth - additionalSpace + reservedSpace;
+        }
+
+        return graphemeLines;
+      };
 
 
-          fabric.util.object.extend(fabric.Textbox.prototype, {
-            _wrapLine: _wrapLine,
-          });
+      fabric.util.object.extend(fabric.Textbox.prototype, {
+        _wrapLine: _wrapLine,
+      });
 
 
-          canvas.setDimensions({
-            width: '100%',
-            height: 'auto'
-          }, {
-            cssOnly: true
-          });
+      canvas.setDimensions({
+        width: '100%',
+        height: 'auto'
+      }, {
+        cssOnly: true
+      });
 
-          canvas.set({
-            imageSmoothingEnabled: true,
-            enableRetinaScaling: true
-          });
-          var text = "Doge"
-          var fonts = ["Impact"];
-          let newtext = new fabric.Textbox(text, {
-            fontFamily: "Impact",
-            stroke: '#ffffff',
-            strokeWidth: 4,
-            fontSize: 100,
-            top: 50,
-            left: 0,
-            width: 900,
-            textAlign: 'center',
-            breakWords: true,
-          });
+      canvas.set({
+        imageSmoothingEnabled: true,
+        enableRetinaScaling: true
+      });
+      var text = "DOGE"
+      var fonts = ["Impact"];
+      let toptext = new fabric.Textbox(text, {
+        fontFamily: "Impact",
+        fill: '#ffffff',
+        stroke: '#0',
+        strokeWidth: 4,
+        fontSize: 100,
+        top: 50,
+        left: 0,
+        width: 900,
+        textAlign: 'center',
+        breakWords: true
+      });
 
-          // $('#imgone').on('click', function() {
-          //   let canvas_bg_src = $(this).attr('canvassrc');
-          // })
-          //
+      $('#imgattr').on("submit", function(event) {
+        event.preventDefault();
+        // process form
 
-          let selections = [];
-          $('.jq_imgselection').each(function(index, element) {
+        //Retreive the data from the form:
+        var data = $('#imgattr').serializeArray();
 
-            selections.push(this);
+        //Add in additional data to the original form data:
+        // data.push(
+        //   {name: 'age',      value: 25},
+        //   {name: 'sex',      value: 'M'},
+        //   {name: 'weight',   value: 200}
+        // );
 
-            $(this).on('click', function() {
-              $(selections).removeClass('imgselected');
-              let canvas_bg_src = $(this).attr('canvassrc');
-              $(this).attr('selected', 'true')
-              console.log(canvas_bg_src);
-              $(this).addClass('imgselected');
+        let imgdata = canvas.toDataURL({
+          format: 'png',
+          enableRetinaScaling: false,
+          multiplier: 1
+        });
 
-              // fetch(canvas_bg_src)
-              // .then(function() {
-              //     console.log("ok");
-              // }).catch(function() {
-              //     console.log("error");
-              // });
+        data.push({
+          name: 'imagedata',
+          value: imgdata
+        })
 
-              fabric.Image.fromURL(canvas_bg_src, function(img) {
-                //Do not allow callback on err
-                if (img._element == null) {
-                  console.error('errorcode')
-                  return;
-                } else {
-                  canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-                    left: 0,
-                    top: 0,
-                    width: 900,
-                    height: 900
-                  });
-                  canvas.renderAll();
-                }
-              }, {
-                crossOrigin: 'Anonymous'
-              })
+        //Submit the form via Ajax POST request:
+        $.ajax({
+          type: 'POST',
+          url: '/meme_designer',
+          data: data,
+          dataType: 'json'
+        }).done(function(response) {
+          if (response.result == 'redirect') {
+          //redirecting to main page from here.
+          window.location.replace(response.url);
+          }
+          console.log("Response Data" + data); //Log the server response to console
+          return true;
+        });
+      });
 
-            })
-          })
+      let bottomtext = new fabric.Textbox('', {
+        fontFamily: "Impact",
+        fill: '#ffffff',
+        stroke: '#0',
+        strokeWidth: 4,
+        fontSize: 100,
+        top: 860,
+        originY: 'bottom',
+        left: 0,
+        width: 900,
+        textAlign: 'center',
+        breakWords: true
+      });
 
-          // backgroundImage
+      // $('#imgone').on('click', function() {
+      //   let canvas_bg_src = $(this).attr('canvassrc');
+      // })
+      //
 
-          // changeAlign();
+      let selections = [];
+      $('.jq_imgselection').each(function(index, element) {
 
-          // function changeAlign() {
-          //   var val = align[Math.floor(Math.random() * align.length)];
-          //   text.set('textAlign', val);
-          //   el.innerHTML = 'Text Alignment : ' + val;
-          //   canvas.setActiveObject(text);
-          //   canvas.renderAll();
-          // }
-          canvas.add(newtext);
+        selections.push(this);
 
-          $('#toptext').keyup(function() {
-            console.log($(this).val());
-            newtext.text = ($(this).val());
-            canvas.renderAll();
-          })
+        $(this).on('click', function() {
+          $(selections).removeClass('imgselected');
+          let canvas_bg_src = $(this).attr('canvassrc');
+          $(this).attr('selected', 'true')
+          console.log(canvas_bg_src);
+          $(this).addClass('imgselected');
 
-          let toptextcv;
-          canvas.on('text:changed', function(e) {
-            toptextcv = newtext.text;
-            $('#toptext').val(toptextcv);
-          })
+          // fetch(canvas_bg_src)
+          // .then(function() {
+          //     console.log("ok");
+          // }).catch(function() {
+          //     console.log("error");
+          // });
 
-          $('#objectimplement').on('click', function() {
-            //
-            //
-            // //if(!window.localStorage){alert("This function is not supported by your browser."); return;}
-            // //console.log(canvas.toDataURL())
-            // var newTab = window.open();
-            //
-            // let imagecopy = new Image();
-            // imagecopy.src = canvas.toDataURL();
-            //
-            // imagecopy.onload = function ()
-            // {
-            //     var imageincvvcopy = new fabric.Image(imagecopy);
-            //     imageincvvcopy.set({
-            //         padding: 0,
-            //         top:20,
-            //         width: 400,
-            //         height: 400
-            //     });
-            //     imageincvvcopy.filters.push(
-            //       new fabric.Image.filters.Resize({
-            //         resizeType: 'hermite',
-            //         scaleX: 0.4,
-            //         scaleY: 0.4
-            //       })
-            //     );
-            //     imageincvvcopy.applyFilters();
-            //
-            //     canvas.add(imageincvvcopy);
-            //     canvas.bringToFront(imageincvvcopy);
-            //     // canvas.renderAll();
-            //
-            // }
-            //
-            //   var img = new Image();
-            //   newTab.document.write(`<h2>Right click, &#8618; Save image AS..`)
-            //
-            //   img.onload = function() {
-            //     newTab.document.body.append(img);
-            //     newTab.document.location.href = "#";
-            //
-            //   }
-            //
-            //   img.src = imageincvvcopy.toDataURL({
-            //     format: 'png',
-            //     enableRetinaScaling: false,
-            //     multiplier: 1
-            //   });
-            //   newTab.document.close();
-
-            }) //end objectimplement
-
-            $('#savepng').on('click', function() {
-              //if(!window.localStorage){alert("This function is not supported by your browser."); return;}
-              //console.log(canvas.toDataURL())
-              var newTab = window.open();
-              var img = new Image();
-              newTab.document.write(`<h2>Right click, &#8618; Save image AS..</h2>`)
-
-              img.onload = function() {
-                newTab.document.body.append(img);
-                newTab.document.location.href = "#";
-              }
-
-              img.src = canvas.toDataURL({
-                format: 'png',
-                enableRetinaScaling: false,
-                multiplier: 1
+          fabric.Image.fromURL(canvas_bg_src, function(img) {
+            //Do not allow callback on err
+            if (img._element == null) {
+              console.error('errorcode')
+              return;
+            } else {
+              canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                left: 0,
+                top: 0,
+                width: 900,
+                height: 900
               });
+              canvas.renderAll();
+            }
+          }, {
+            crossOrigin: 'Anonymous'
+          })
 
-              img.style.width = "100%"
-              newTab.document.close();
-            });
+        })
+      })
 
-          });
+      // backgroundImage
+
+      // changeAlign();
+
+      // function changeAlign() {
+      //   var val = align[Math.floor(Math.random() * align.length)];
+      //   text.set('textAlign', val);
+      //   el.innerHTML = 'Text Alignment : ' + val;
+      //   canvas.setActiveObject(text);
+      //   canvas.renderAll();
+      // }
+      canvas.add(toptext);
+      canvas.add(bottomtext);
+
+      $('#toptext').keyup(function() {
+        console.log($(this).val());
+        toptext.text = ($(this).val());
+        canvas.renderAll();
+      })
+
+      $('#bottomtext').keyup(function() {
+        console.log($(this).val());
+        bottomtext.text = ($(this).val());
+        canvas.renderAll();
+      })
+
+      let toptextcv;
+      canvas.on('text:changed', function(e) {
+        toptextcv = toptext.text;
+        $('#toptext').val(toptextcv);
+        $('#bottomtext').val(toptextcv);
+      })
+
+      // $('#objectimplement').on('click', function() {
+      //
+      //
+      // }) //end objectimplement
+
+      $('#savepng').on('click', function() {
+        //if(!window.localStorage){alert("This function is not supported by your browser."); return;}
+        //console.log(canvas.toDataURL())
+        var newTab = window.open();
+        var img = new Image();
+        newTab.document.write(`<h2>Right click, &#8618; Save image AS..</h2>`)
+
+        img.onload = function() {
+          newTab.document.body.append(img);
+          newTab.document.location.href = "#";
+        }
+
+        img.src = canvas.toDataURL({
+          format: 'png',
+          enableRetinaScaling: false,
+          multiplier: 1
+        });
+
+        img.style.width = "100%"
+        newTab.document.close();
+      });
+
+    });
   </script>
   </body>
 

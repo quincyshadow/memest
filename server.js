@@ -5,9 +5,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8000;
 
+app.use(bodyParser.json({limit: '100mb',extended: true}));
+app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
 
-app.use(bodyParser.json({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
 //To access static assets use prefix of /static/.... (storage: folder '/static' (lol))

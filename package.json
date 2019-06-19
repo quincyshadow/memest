@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "db": "knex migrate:latest; knex seed:run",
+    "dbreload": "knex migrate:rollback; knex migrate:latest; knex seed:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "connect-session-knex": "^1.4.0",
+    "date-and-time": "^0.7.0",
     "dotenv": "^8.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
@@ -21,6 +22,7 @@
     "knex": "^0.17.6",
     "method-override": "^3.0.0",
     "pg": "^7.3.0",
+    "sharp": "^0.22.1",
     "shufflejs": "^5.2.2"
   }
 }
