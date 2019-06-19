@@ -437,7 +437,7 @@
               //console.log(canvas.toDataURL())
               var newTab = window.open();
               var img = new Image();
-              newTab.document.write(`<h2>Right click, &#8618; Save image AS..`)
+              newTab.document.write(`<h2>Right click, &#8618; Save image AS..</h2>`)
 
               img.onload = function() {
                 newTab.document.body.append(img);
@@ -449,6 +449,8 @@
                 enableRetinaScaling: false,
                 multiplier: 1
               });
+
+              img.style.width = "100%"
               newTab.document.close();
             });
 
