@@ -1,24 +1,21 @@
 const knex = require("../db/knex.js");
 
 module.exports = {
-  // CHANGE ME TO AN ACTUAL FUNCTION
-  memeDesigner: function(req, res) {
+  index: function(req, res) {
+    // knex('meme')
+    //   .where({
+    //     id: parseInt(req.params.id)
+    //   })
+    //   .then((results) => {
+        res.render('index', {});
+  },
+  memeDesignerGET: function(req, res) {
     knex('template')
       .then(results => {
-        res.render("memeDesigner", {
+        res.render('memeDesigner', {
           template: results
         });
       })
-  },
-  appointmentNewGET: function(req, res) {
-    knex('doctor')
-      .where({
-        id: parseInt(req.params.id)
-      })
-      .then((results) => {
-        res.render("appointmentNew", {doctors: results[0].name})
-      })
-
   },
   appointmentNewPOST: function(req, res) {
       let doctor_id = parseInt(req.params.id); //this is nt secure (but the submission is unsecure anyway)

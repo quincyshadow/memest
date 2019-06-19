@@ -2,7 +2,8 @@
 const template = require("../controllers/template.js")
 const users = require("../controllers/users.js")
 module.exports = function(app) {
-  app.get('/', template.memeDesigner);
+  app.get('/', template.index);
+  app.get('/memeDesigner', template.memeDesignerGET);
 }
 
 

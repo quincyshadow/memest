@@ -1,69 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
-
-  <title>Site Title</title>
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../style/style.css">
-
-</head>
-
-<body>
-
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron pb-2">
-    <div class="container">
-      <div class="row">
-        <div class='col-9'>
-          <h1 class="display-3">Doctors Available</h1>
+  <%- include('header'); -%>
+  <div class="container-fluid pt-2">
+    <!-- Example row of columns -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Check out the <a href="#" class="alert-link">meme generator.</a>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="row justify-content-center text-center">
+      <div class="col-sm">
+      <div class="card mb-3">
+        <img class="card-img-top" src="./static/images/samplelg.jpg" alt="Card image cap">
+        <div class="card-body m-0 p-1">
+          <h5 class="card-title p-0 m-0">+46</h5>
+          <p class="card-text p-0 m-0">Certified kek.</p>
         </div>
-        <div class='col-3 text-right'>
-          <a class="btn btn-primary btn-lg" href="/doctor/login" role="button">Doctor Login</a>
+        <div class="card-footer m-0 p-0">
+          <small class="text-muted">by normieuser</small>
         </div>
       </div>
     </div>
+    <div class="col-sm">
+    <div class="card mb-3">
+      <img class="card-img-top" src="./static/images/samplelg.jpg" alt="Card image cap">
+      <div class="card-body m-0 p-1">
+        <h5 class="card-title p-0 m-0">+46</h5>
+        <p class="card-text p-0 m-0">Certified kek.</p>
+      </div>
+      <div class="card-footer m-0 p-0">
+        <small class="text-muted">by normieuser</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm">
+  <div class="card mb-3">
+    <img class="card-img-top" src="./static/images/samplelg.jpg" alt="Card image cap">
+    <div class="card-body m-0 p-1">
+      <h5 class="card-title p-0 m-0">+46</h5>
+      <p class="card-text p-0 m-0">Certified kek.</p>
+    </div>
+    <div class="card-footer m-0 p-0">
+      <small class="text-muted">by normieuser</small>
+    </div>
+  </div>
+</div>
   </div>
 
-  <div class="container">
-    <!-- Example row of columns -->
-    <% doctors.forEach(function(e,i) { %>
-    <% if(i%3 === 0) { %>
-    <div class="row justify-content-center text-center clearfix pb-3">
-      <%  } %>
-      <div class="col-4 fill">
-        <div class='col-12 border rounded'>
-          <h2><%= e.name+i %></h2>
-          <img src="<%= e.img_url %>" class="img-thumbnail book img-fluid" alt="Responsive image">
-          <p class="text-right mt-2"><a class="btn btn-secondary" href="/doctors/<%= e.id %>" role="button">Book &raquo;</a></p>
-        </div>
-      </div>
-      <% if(i == doctors.length-1 || i !== 0 && (i+1)%3 === 0) { %>
-        </div>
-        <% } %>
+    <hr>
 
-      <% }) %>
-      <hr>
-
-      <footer>
-        <p>&copy; Company 2017</p>
-      </footer>
-    </div> <!-- /container -->
+    <footer>
+      <p>&copy; MemeST 2019.</p>
+    </footer>
+  </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>

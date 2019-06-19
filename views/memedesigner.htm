@@ -492,6 +492,8 @@ fabric.util.object.extend(fabric.Textbox.prototype, {
       $('#savepng').on('click', function() {
         //if(!window.localStorage){alert("This function is not supported by your browser."); return;}
         //console.log(canvas.toDataURL())
+        canvas.setZoom(.5);
+
         var newTab = window.open();
         var img = new Image();
         newTab.document.write(`<h2>Right click, &#8618; Save image AS..`)
@@ -500,7 +502,8 @@ fabric.util.object.extend(fabric.Textbox.prototype, {
           newTab.document.body.append(img);
           newTab.document.location.href = "#";
         }
-        img.src = canvas.toDataURL();
+        img.src = canvas.toDataURL({width:50,
+        multiplier: .5});
         newTab.document.close();
       });
 

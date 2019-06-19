@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "connect-session-knex": "^1.4.0",
+    "dotenv": "^8.0.0",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
