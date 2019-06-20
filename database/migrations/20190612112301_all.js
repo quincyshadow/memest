@@ -1,5 +1,5 @@
 let query = `
-  CREATE TABLE public.template (
+  CREATE TABLE if not exists mytable template (
       id integer NOT NULL,
       category text,
       title text,
@@ -12,7 +12,7 @@ let query = `
     int,string*****
  */
 
-  CREATE SEQUENCE public.template_id_seq
+  CREATE SEQUENCE template_id_seq
       AS integer
       START WITH 1
       INCREMENT BY 1
@@ -20,11 +20,11 @@ let query = `
       NO MAXVALUE
       CACHE 1;
 
-  ALTER SEQUENCE public.template_id_seq OWNED BY public.template.id;
+  ALTER SEQUENCE template_id_seq OWNED BY template.id;
 
-  ALTER TABLE ONLY public.template ALTER COLUMN id SET DEFAULT nextval('public.template_id_seq'::regclass);
+  ALTER TABLE ONLY template ALTER COLUMN id SET DEFAULT nextval('template_id_seq'::regclass);
 
-  ALTER TABLE ONLY public.template
+  ALTER TABLE ONLY template
   ADD CONSTRAINT template_pkey PRIMARY KEY (id);
 `
 
