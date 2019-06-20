@@ -16,7 +16,7 @@ module.exports = {
       client: 'pg',
       connection: {
         user: 'postgres',
-        host: 'localhost',
+        host: 'postgres',
         database: 'memest',
         password: 'postgres',
         port: 5432
