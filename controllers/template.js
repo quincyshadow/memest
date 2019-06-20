@@ -12,7 +12,7 @@ module.exports = {
   memeDesignerGET: function(req, res) {
     knex('template')
       .then(results => {
-        res.render('memeDesigner', {
+        res.render('memedesigner', {
           template: results
         });
       })
