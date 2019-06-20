@@ -69,6 +69,9 @@ function queryBuilder(qu, knex, name) {
       // We need to ensure the function exists, then add the table trigger
       return knex.schema.raw(qu)
     })
+    .catch(function(error) {
+      console.error(error);
+    })
 }
 ///////
 exports.seed = function(knex, Promise) {

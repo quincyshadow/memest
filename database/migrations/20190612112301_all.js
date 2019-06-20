@@ -1,5 +1,5 @@
 let query = `
-  CREATE TABLE if not exists mytable template (
+  CREATE TABLE if not exists template (
       id integer NOT NULL,
       category text,
       title text,
@@ -28,9 +28,9 @@ let query = `
   ADD CONSTRAINT template_pkey PRIMARY KEY (id);
 `
 
-  // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
-  //
-  // ALTER TABLE ONLY public.appointment ALTER COLUMN id SET DEFAULT nextval('public.appointment_id_seq'::regclass);
+// ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
+//
+// ALTER TABLE ONLY public.appointment ALTER COLUMN id SET DEFAULT nextval('public.appointment_id_seq'::regclass);
 
 // ALTER TABLE ONLY public.appointment
 //     ADD CONSTRAINT appointment_pkey PRIMARY KEY (id);
@@ -54,6 +54,10 @@ function queryBuilder(qu, knex, name)
     {
       // We need to ensure the function exists, then add the table trigger
       return knex.schema.raw(qu)
+    })
+    .catch(function(error)
+    {
+      console.error(error);
     })
 }
 
