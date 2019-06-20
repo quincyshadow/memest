@@ -13,7 +13,7 @@ RUN echo 'crond' >> /boot.sh
 
 RUN echo 'npm install --production' >> /boot.sh
 
-RUN echo 'npm run dbreload' >> /boot.sh
-
 # npm start, make sure to have a start attribute in "scripts" in package.json
 CMD sh /boot.sh && npm start
+
+RUN echo 'npm run dbreload' >> /boot.sh
