@@ -9,7 +9,7 @@
  7.  [openode postgresql local reference](https://blog.openode.io/b/adding-a-local-postgresql-database-82)
  8. In docker
  9. For a **CLEAN SLATE** `openode erase-all; openode deploy`
- 10.To add files and reload `openode sync-n-reload`
+ 10. To add files and reload `openode sync-n-reload`
 `
 
 **DO NOT** use `openode deploy`!!!
