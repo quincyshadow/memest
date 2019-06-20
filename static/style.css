@@ -33,5 +33,5 @@
   /* Read next point */
   unicode-range: U+000-5FF;
   /* Download only latin glyphs */
-  src: local('Impact'), url('fonts/Impact.woff') format('woff');
+  src: local('Impact'), url('/static/fonts.impact.woff') format('woff');
 }
