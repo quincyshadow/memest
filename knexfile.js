@@ -6,20 +6,26 @@ module.exports = {
         host: "localhost"
       },
       migrations: {
-          directory: __dirname + '/db/migrations',
+          directory: __dirname + '/database/migrations',
         },
       seeds: {
-          directory: __dirname + '/db/seeds',
+          directory: __dirname + '/database/seeds',
         },
     },
   production: {
       client: 'pg',
-      connection: process.env.DATABASE_URL,
+      connection: {
+        user: 'postgres',
+        host: 'localhost',
+        database: 'memest',
+        password: 'postgres',
+        port: 5432
+    },
       migrations: {
-          directory: __dirname + '/db/migrations',
+          directory: __dirname + '/database/migrations',
         },
       seeds: {
-          directory: __dirname + '/db/seeds/production',
+          directory: __dirname + '/database/seeds',
         },
     },
 };

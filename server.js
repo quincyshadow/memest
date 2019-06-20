@@ -3,7 +3,7 @@ const methodOverride = require('method-override')
 const path = require("path");
 const app = express();
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 80;
 
 app.use(bodyParser.json({limit: '100mb',extended: true}));
 app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
