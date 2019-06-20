@@ -1,24 +1,37 @@
 .createbut {
   width: 400px;
 }
+
 .fill {
   min-height: 100vh;
 }
-.limhi
-{
-  height:200px;
+
+.limhi {
+  height: 200px;
 }
-.grid__brick
-{
-  border:2px solid white;
+
+.grid__brick {
+  border: 2px solid white;
 }
-.imgselected
-{
-  border:2px solid red;
+
+.imgselected {
+  border: 2px solid red;
 }
+
 .templator {
   background-image: url("/images/xv.png");
   background-repeat: repeat;
   background-color: #B7B9B8;
   color: black;
+}
+
+@font-face {
+  font-family: 'Impacte';
+  /* font-weight: 400; */
+  font-style: normal;
+  font-display: swap;
+  /* Read next point */
+  unicode-range: U+000-5FF;
+  /* Download only latin glyphs */
+  src: local('Impact'), url('fonts/Impact.woff') format('woff');
 }
