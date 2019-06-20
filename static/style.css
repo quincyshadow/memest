@@ -19,7 +19,7 @@
 }
 
 .templator {
-  background-image: url("/images/xv.png");
+  background-image: url("/static/images/xv.png");
   background-repeat: repeat;
   background-color: #B7B9B8;
   color: black;
@@ -29,9 +29,9 @@
   font-family: 'Impacte';
   /* font-weight: 400; */
   font-style: normal;
-  font-display: swap;
-  /* Read next point */
-  unicode-range: U+000-5FF;
+  /*font-display: swap;
+  Read next point
+  unicode-range: U+000-5FF; */
   /* Download only latin glyphs */
-  src: local('Impact'), url('/static/fonts.impact.woff') format('woff');
+  src: local('Impact'), url('/static/fonts/impact.woff') format('woff');
 }
