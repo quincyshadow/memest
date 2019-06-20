@@ -23,6 +23,7 @@
   background-repeat: repeat;
   background-color: #B7B9B8;
   color: black;
+  display: none;
 }
 
 @font-face {
