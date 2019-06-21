@@ -81,7 +81,7 @@ module.exports = {
     let relUrlMeme = `/static/images/published/${memestring}`
 
     sharp(imgBuffer)
-      .resize(400)
+      .resize(800)
       .toFile(`.${relUrlMeme}`)
       .then(data =>
       {
