@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   development: {
       client: 'pg',
@@ -18,7 +20,7 @@ module.exports = {
         user: 'postgres',
         host: 'postgres',
         database: 'memest',
-        password: `${process.env.DB_PASS}`,
+        password: process.env.DB_PASS,
         port: 5432
     },
       migrations: {
