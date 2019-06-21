@@ -20,4 +20,4 @@ CMD sh /boot.sh && npm start
 # openode cmd www 'npm run dbreload' //
 
 #OR uncomment in Dockerfile:
-# openode cmd RUN echo 'npm run dbreload' >> /boot.sh
+# RUN echo 'npm run dbreload' >> /boot.sh
