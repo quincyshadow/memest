@@ -68,7 +68,8 @@ function guestAuthMW(req, res, next)
       })
   }
   else {
-    console.log(req.session.ipaddr + '_session present.')
+    console.log(req.session.ipaddr + '_session present.');
+    next();
   }
 }
 
