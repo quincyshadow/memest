@@ -1,0 +1,20 @@
+version: '3'
+services:
+  www:
+    env_file:
+      - .env
+    container_name: default
+    volumes:
+      - .:/opt/app/
+    ports:
+      - '80:80'
+    build:
+      context: .
+
+  postgres:
+    image: postgres:11-alpine
+    volumes:
+      - /opt/app/db/:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: _
+      POSTGRES_DB: _
