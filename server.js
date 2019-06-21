@@ -1,4 +1,6 @@
-require('dotenv').config();
+if(NODE_ENV == null || NODE_ENV !== 'production') {
+ require('dotenv').config();
+}
 const express = require("express");
 const session = require('express-session')
 // const methodOverride = require('method-override')

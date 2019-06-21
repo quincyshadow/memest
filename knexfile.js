@@ -1,5 +1,6 @@
-require('dotenv').config();
-
+if(NODE_ENV == null || NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 module.exports = {
   development: {
       client: 'pg',
