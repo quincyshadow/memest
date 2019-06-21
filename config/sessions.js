@@ -10,12 +10,13 @@ module.exports = function(app){
 
 
   app.use(session({
-      secret: 'keyboard cat',
+      ipaddr: null,
+      secret: 'asdwd3wdewfevw34f3qfwfadfarferc',
       cookie: {
           maxAge: 259200000 // 30 days
       },
       resave: false,
-      saveUninitialized: false,
+      saveUninitialized: true,
       store: store
   }));
 }

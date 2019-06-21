@@ -5,6 +5,8 @@ const users = require("../controllers/users.js")
 const memeDocument = require("../controllers/memeDocument.js")
 const vote = require("../controllers/vote.js")
 const knex = require("../database/knex.js")
+var session = require('express-session')
+
 
 module.exports = function(app)
 {
@@ -32,7 +34,7 @@ module.exports = function(app)
 
 function guestAuthMW(req, res, next)
 {
-  if (!req.session.user_id || !req.session.ipaddr)
+  if (req.session.user_id == null &&  req.session.ipaddr == null)
   {
     var ipString = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
@@ -61,9 +63,12 @@ function guestAuthMW(req, res, next)
       })
       .then(() =>
       {
-        console.log(req.session.ipaddr + '_guestloggedin');
+        console.log(req.session.ipaddr + '_guestsession created');
         next()
       })
+  }
+  else {
+    console.log(req.session.ipaddr + '_session present.')
   }
 }
 
