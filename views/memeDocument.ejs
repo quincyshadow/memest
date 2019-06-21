@@ -1,0 +1,101 @@
+<%- include('header'); -%>
+<div class="container-fluid pt-3 templator" style="display:block;">
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col-sm">
+        <div class="card mb-3 text-center">
+          <img class="card-img-top" src="<%= template.img_url %>" alt="Card image cap">
+          <div class="card-body m-0 p-1">
+            <h5 id="m<%= template.id %>" class="card-title p-0 m-0"><%= (template.voteTotal) %></h5>
+          </div>
+
+
+          <form class="btn-group btn-group-toggle btn-group-justified pb-1" data-toggle="buttons" style="width: 100%" id='my_radio_box'>
+
+            <label class="upvote btn btn-success rounded-0" style="width: 50%">
+              <input type="radio" name="options" autocomplete="off" unchecked value="1"> ⬆ Kek
+            </label>
+            <label class="downvote btn btn-danger rounded-0" style="width: 50%">
+              <input type="radio" name="options" autocomplete="off" unchecked value="-1"> Cringe ⬇
+            </label>
+
+          </form>
+          <div class="card-footer m-0 p-0">
+            <small class="text-muted">by normieuser</small>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+<div class="container pt-3">
+  <h3>Comments</h3>
+
+</div>
+
+
+<div class="container pt-2" style="overflow-y:auto; overflow-x: none; max-height: 400px;">
+  <p>Comment here</p>
+  <p>Comment here</p>
+  <p>Comment here</p>
+  <p><%= JSON.stringify(template) %></p>
+  <p><%= JSON.stringify(userVote) %></p>
+</div> <!-- /container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- PLEASE MINIFY THIS JS, YOU CAN REMOVE UNEEDED ITEMS ON THE SITE FABRIC JS -->
+<script>
+  function postVote(vote, user) {
+    let data = {
+      vote: `${vote}`
+    }
+
+    // data.push({
+    // })
+
+    $.ajax({
+      type: 'POST',
+      url: '',
+      data: data,
+      dataType: 'json'
+    }).done(function(response) {
+      if (response.result == 'update') {
+        console.log(response.num)
+        let curr = $('h5').text();
+        curr = eval(curr + response.num)
+        if(Math.sign(curr) == 1 )
+        { curr = `+${curr}`}
+        else {
+          curr = `-${curr}`
+        }
+        $('#m<%= template.id %>').text(curr);
+      } else {
+        console.error('could not post vote data.')
+      }
+      console.log("Response Data" + response.num); //Log the server response to console
+      return true;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    $('#my_radio_box').change(() => {
+      console.log('Radio Box has been changed!');
+      let selected_value = $("input[name='options']:checked").val();
+      console.log(selected_value);
+      postVote(selected_value)
+    })
+  }) //end doc
+</script>
+</body>
+
+</html>

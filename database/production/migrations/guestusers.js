@@ -1,18 +1,15 @@
 let query = `
-  CREATE TABLE if not exists template (
+  CREATE TABLE if not exists guestusers (
       id integer NOT NULL,
-      category text,
-      title text,
-      tags text,
-      thumbUrl text,
-      fullSzUrl text
+      ipaddr text,
+      has_voted text
   );
 
- /* id,category,title,tags,thumbUrl,fullSzUrl
+ /* id,ipaddr,has_voted
     int,string*****
  */
 
-  CREATE SEQUENCE template_id_seq
+  CREATE SEQUENCE guestusers_id_seq
       AS integer
       START WITH 1
       INCREMENT BY 1
@@ -20,12 +17,12 @@ let query = `
       NO MAXVALUE
       CACHE 1;
 
-  ALTER SEQUENCE template_id_seq OWNED BY template.id;
+  ALTER SEQUENCE guestusers_id_seq OWNED BY guestusers.id;
 
-  ALTER TABLE ONLY template ALTER COLUMN id SET DEFAULT nextval('template_id_seq'::regclass);
+  ALTER TABLE ONLY guestusers ALTER COLUMN id SET DEFAULT nextval('guestusers_id_seq'::regclass);
 
-  ALTER TABLE ONLY template
-  ADD CONSTRAINT template_pkey PRIMARY KEY (id);
+  ALTER TABLE ONLY guestusers
+  ADD CONSTRAINT guestusers_pkey PRIMARY KEY (id);
 `
 
 // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
@@ -69,7 +66,7 @@ exports.up = function(knex, Promise)
 ////////////////////////////////
 
 let drop = `
-DROP TABLE public.template CASCADE;
+DROP TABLE guestusers CASCADE;
 `
 drop = drop.replace(/\n/g, '').replace(/\t/g, ' ');
 

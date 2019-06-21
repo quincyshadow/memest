@@ -22,7 +22,7 @@ module.exports = {
         port: 5432
     },
       migrations: {
-          directory: __dirname + '/database/migrations',
+          directory: __dirname + '/database/production/migrations',
         },
       seeds: {
           directory: __dirname + '/database/seeds',

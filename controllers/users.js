@@ -56,7 +56,7 @@ module.exports = {
   },
   appointmentDetailsGET: (req, res) =>
   {
-    console.log('--');
+    // console.log('--');
 
     const appt_id = parseInt(req.params.id);
     knex('appointment')
@@ -73,7 +73,7 @@ module.exports = {
   },
   appointmentDetailsPUT: (req, res) =>
   {
-    console.log('--');
+    // console.log('--');
 
     const appt_id = parseInt(req.params.id);
     if (req.body.status)
