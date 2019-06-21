@@ -70,12 +70,12 @@
     }).done(function(response) {
       if (response.result == 'update') {
         console.log(response.num)
-        let curr = $('h5').text();
+        let curr = $('h5').text().replace('+', '') );;
         curr = eval(curr + response.num)
         if(Math.sign(curr) == 1 )
         { curr = `+${curr}`}
         else {
-          curr = `-${curr}`
+          // curr = `-${curr}`
         }
         $('#m<%= template.id %>').text(curr);
       } else {
