@@ -18,7 +18,7 @@ module.exports = {
         user: 'postgres',
         host: 'postgres',
         database: 'memest',
-        password: 'postgres',
+        password: `${process.env.DB_PASS}`,
         port: 5432
     },
       migrations: {
