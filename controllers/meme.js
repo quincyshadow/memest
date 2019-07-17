@@ -18,6 +18,7 @@ module.exports = {
     knex('template')
       .then(results =>
       {
+        results.username = req.session.ipaddr;
         res.render('memeDesigner',
         {
           template: results

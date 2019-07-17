@@ -11,72 +11,33 @@
       <h2>Front Page Memes</h2>
     </div>
     <div class="row justify-content-center text-center">
-
+      <!-- <%= JSON.stringify(template.array[0]) %> -->
+      <% template.array.forEach( (doc) => { %>
+<!--       <p><%= doc.template.img_url %></p> -->
       <div class="col-sm">
+        <a href="/published/<%= doc.template.id %>">
         <div class="card mb-3">
-          <img class="card-img-top" src="./static/images/samplelg.jpg" alt="Card image cap">
+          <img class="card-img-top" src="<%= doc.template.img_url %>" alt="Card image cap">
           <div class="card-body m-0 p-1">
-            <h5 class="card-title p-0 m-0">+46</h5>
+            <h5 class="card-title p-0 m-0" id="m<%= doc.template.id %>">
+              <%= doc.template.voteTotal ? doc.template.voteTotal : '+0' %></h5>
           </div>
 
 
-            <div class="btn-group btn-group-toggle btn-group-justified pb-1" data-toggle="buttons" style="width: 100%">
+<!--             <div class="btn-group btn-group-toggle btn-group-justified pb-1" data-toggle="buttons" style="width: 100%">
               <label class="btn btn-success active rounded-0" style="width: 50%">
                 <input type="radio" name="options" id="kek" autocomplete="off" checked> ⬆ Kek
               </label>
               <label class="btn btn-danger rounded-0" style="width: 50%">
                 <input type="radio" name="options" id="cringe" autocomplete="off"> Cringe ⬇
               </label>
-            </div>
+            </div> -->
           <div class="card-footer m-0 p-0">
             <small class="text-muted">by normieuser</small>
           </div>
         </div>
-      </div>
-
-      <div class="col-sm">
-        <div class="card mb-3">
-          <img class="card-img-top" src="./static/images/samplelg.jpg" alt="Card image cap">
-          <div class="card-body m-0 p-1">
-            <h5 class="card-title p-0 m-0">+46</h5>
-          </div>
-
-
-            <div class="btn-group btn-group-toggle btn-group-justified pb-1" data-toggle="buttons" style="width: 100%">
-              <label class="btn btn-success active rounded-0" style="width: 50%">
-                <input type="radio" name="options" id="kek" autocomplete="off" checked> ⬆ Kek
-              </label>
-              <label class="btn btn-danger rounded-0" style="width: 50%">
-                <input type="radio" name="options" id="cringe" autocomplete="off"> Cringe ⬇
-              </label>
-            </div>
-          <div class="card-footer m-0 p-0">
-            <small class="text-muted">by normieuser</small>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm">
-        <div class="card mb-3">
-          <img class="card-img-top" src="./static/images/samplelg.jpg" alt="Card image cap">
-          <div class="card-body m-0 p-1">
-            <h5 class="card-title p-0 m-0">+46</h5>
-          </div>
-
-
-            <div class="btn-group btn-group-toggle btn-group-justified pb-1" data-toggle="buttons" style="width: 100%">
-              <label class="btn btn-success active rounded-0" style="width: 50%">
-                <input type="radio" name="options" id="kek" autocomplete="off" checked> ⬆ Kek
-              </label>
-              <label class="btn btn-danger rounded-0" style="width: 50%">
-                <input type="radio" name="options" id="cringe" autocomplete="off"> Cringe ⬇
-              </label>
-            </div>
-          <div class="card-footer m-0 p-0">
-            <small class="text-muted">by normieuser</small>
-          </div>
-        </div>
-      </div>
+      </div></a>
+      <% }) %>
 
 
       </div> <!-- end row -->
@@ -95,6 +56,49 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--   <script>
+  function postVote(vote, user) {
+    let data = {
+      vote: `${vote}`
+    }
+
+    // data.push({
+    // })
+
+    $.ajax({
+      type: 'POST',
+      url: `/published/{}`,
+      data: data,
+      dataType: 'json'
+    }).done(function(response) {
+      if (response.result == 'update') {
+        console.log(response.num)
+        let curr = $('h5').text().replace('+', '');
+        curr = eval(curr + response.num)
+        if(Math.sign(curr) == 1 )
+        { curr = `+${curr}`}
+        else {
+          // curr = `-${curr}`
+        }
+        $('#m<%= template.id %>').text(curr);
+      } else {
+        console.error('could not post vote data.')
+      }
+      console.log("Response Data" + response.num); //Log the server response to console
+      return true;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+    $('#my_radio_box').change(() => {
+      console.log('Radio Box has been changed!');
+      let selected_value = $("input[name='options']:checked").val();
+      console.log(selected_value);
+      postVote(selected_value)
+    })
+  }) //end doc
+</script> -->
   </body>
 
   </html>

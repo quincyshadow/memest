@@ -8,7 +8,7 @@ SET search_path TO public;
       category text,
       tags text,
       approved text,
-      vote int
+      vote integer
   );
 
  /* id,user_id,img_url,category,tags,approved

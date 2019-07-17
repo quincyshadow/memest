@@ -3,8 +3,8 @@ SET search_path TO public;
 
   CREATE TABLE if not exists vote (
       id integer NOT NULL,
-      document_id text,
-      user_id text,
+      document_id integer,
+      user_id integer,
       ipaddr text,
       didVote text,
       vote integer
