@@ -4,11 +4,19 @@ module.exports = {
   index: function(req, res) {
     let resArr = {'username': null, 'array': []};
 
-    knex("document")
-      .leftOuterJoin('vote', 'document.id', '=', 'vote.document_id')
-      .orderBy("document.id", "desc")
-      .limit(3)
-      .then(results => {
+    let countedVote = knex.select("document_id")
+    .count("* as total")
+    .from("vote")
+    .groupBy("document_id")
+    .as("countedVote");
+
+    knex.select("*", "countedVote.total")
+    .from("document")
+    .leftOuterJoin(countedVote, "countedVote.document_id", "document.id")
+    .limit(10)
+    .orderBy("document.id", "desc")
+    // .toString()
+    .then(results => {
       resArr.username = req.session.ipaddr;
 
         results.forEach( (doc,index) => {
@@ -26,10 +34,36 @@ module.exports = {
             category: doc.category,
             userVote: 0
           };
-
           resArr.array.push({'template': resultsmodified});
-        });
+        })
       })
+//     knex("document")
+//       .leftOuterJoin('vote', 'document.id', '=', 'vote.document_id')
+//       .orderBy("document.id", "desc")
+//       .limit(10)
+//       .then(results => {
+//       resArr.username = req.session.ipaddr;
+// 
+//         results.forEach( (doc,index) => {
+//           let vote = doc.vote;
+//           if (Math.sign(vote) == 1 || Math.sign(vote) == 0) {
+//             vote = `+${vote}`;
+//           } else {
+//             vote = `-${vote}`;
+//           }
+// 
+//           let resultsmodified = {
+//             id: doc.id,
+//             voteTotal: doc.vote,
+//             img_url: doc.img_url,
+//             category: doc.category,
+//             userVote: 0
+//           };
+// 
+//           resArr.array.push({'template': resultsmodified});
+//         });
+//       })
+//--dont user below
       // .then(() => {
       //   knex("vote")
       //     .where({
