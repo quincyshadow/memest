@@ -75,7 +75,7 @@
         if(Math.sign(curr) == 1 )
         { curr = `+${curr}`}
         else {
-          // curr = `-${curr}`
+          curr = `${parseInt(curr)}`
         }
         $('#m<%= template.id %>').text(curr);
       } else {
@@ -91,7 +91,7 @@
     $('#my_radio_box').change(() => {
       console.log('Radio Box has been changed!');
       let selected_value = $("input[name='options']:checked").val();
-      console.log(selected_value);
+      console.log('selected_value--->:'+selected_value);
       postVote(selected_value)
     })
   }) //end doc

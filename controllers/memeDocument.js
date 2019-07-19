@@ -6,7 +6,8 @@ module.exports = {
   {
     let templateobj = {
       'template': 'asd',
-      'userVote': '0'
+      'userVote': '0',
+      'username': req.session.ipaddr
     };
 
     let id = parseInt(req.params.id);
@@ -24,7 +25,7 @@ module.exports = {
         if(Math.sign(vote) == 1 || Math.sign(vote) == 0)
         { vote = `+${vote}`}
         else {
-          vote = `-${vote}`
+          vote = `${vote}`
         }
 
         let resultsmodified =
