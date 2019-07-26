@@ -6,16 +6,20 @@
  4. `openode`
  5. Fill in user/password/server info.
  6. `openode template --with-services postgresql`
- 7.  [openode postgresql local reference](https://blog.openode.io/b/adding-a-local-postgresql-database-82)
- 8. In docker
- 9. For a **CLEAN SLATE** `openode erase-all; openode deploy`
- 10. To add files and reload `openode sync-n-reload`
+ 7. openode set-config MAX_BUILD_DURATION 400
+ 8.  [openode postgresql local reference](https://blog.openode.io/b/adding-a-local-postgresql-database-82)
+ 9. In docker
+ 10. For a **CLEAN SLATE** `openode erase-all; openode deploy`
+ 11. To add files and reload `openode sync-n-reload`
 `
 
 **DO NOT** use `openode deploy`!!!
 
 Postgresql will be running and the deploy can corrupt data. Insteaad, use `openode stop; openode deploy` or `openode sync-n-reload`
 
+
+
+///////////////////////////
 ## SmartyPants
 
 SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
