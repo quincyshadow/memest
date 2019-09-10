@@ -19,19 +19,6 @@ module.exports = function(app)
   app.post('/published/:id', vote.votePOST);
 }
 
-
-// app.get('/doctors/:id', template.appointmentNewGET);
-// app.post('/doctors/:id', template.appointmentNewPOST);
-// app.get('/doctor/login', users.index);
-// app.post('/doctor/register', users.register);
-// app.post('/doctor/login', users.login);
-// app.use(authMiddleware);
-// app.get('/appointments', users.appointmentListGET);
-// app.get('/appointments/view/:id/', users.appointmentDetailsGET);
-// app.put('/appointments/view/:id/', users.appointmentDetailsPUT);
-// app.delete('/appointments/view/:id/', users.appointmentDetailsDELETE);
-// app.post('/appointments/view/:id/newnote', template.noteNewPOST);
-
 function guestAuthMW(req, res, next)
 {
   if (req.session.user_id == null &&  req.session.ipaddr == null)
