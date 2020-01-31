@@ -1,21 +1,18 @@
 let query = `
-SET search_path TO public;
-
-  CREATE TABLE if not exists document (
+  CREATE TABLE if not exists template (
       id integer NOT NULL,
-      user_id text,
-      img_url text,
       category text,
+      title text,
       tags text,
-      approved text,
-      vote integer
+      thumbUrl text,
+      fullSzUrl text
   );
 
- /* id,user_id,img_url,category,tags,approved
+ /* id,category,title,tags,thumbUrl,fullSzUrl
     int,string*****
  */
 
-  CREATE SEQUENCE document_id_seq
+  CREATE SEQUENCE template_id_seq
       AS integer
       START WITH 1
       INCREMENT BY 1
@@ -23,12 +20,12 @@ SET search_path TO public;
       NO MAXVALUE
       CACHE 1;
 
-  ALTER SEQUENCE document_id_seq OWNED BY document.id;
+  ALTER SEQUENCE template_id_seq OWNED BY template.id;
 
-  ALTER TABLE ONLY document ALTER COLUMN id SET DEFAULT nextval('document_id_seq'::regclass);
+  ALTER TABLE ONLY template ALTER COLUMN id SET DEFAULT nextval('template_id_seq'::regclass);
 
-  ALTER TABLE ONLY document
-  ADD CONSTRAINT document_pkey PRIMARY KEY (id);
+  ALTER TABLE ONLY template
+  ADD CONSTRAINT template_pkey PRIMARY KEY (id);
 `
 
 // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
@@ -72,7 +69,7 @@ exports.up = function(knex, Promise)
 ////////////////////////////////
 
 let drop = `
-DROP TABLE vote CASCADE;
+DROP TABLE template CASCADE;
 `
 drop = drop.replace(/\n/g, '').replace(/\t/g, ' ');
 

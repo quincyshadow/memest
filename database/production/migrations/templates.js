@@ -1,4 +1,6 @@
 let query = `
+SET search_path TO public;
+
   CREATE TABLE if not exists template (
       id integer NOT NULL,
       category text,

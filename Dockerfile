@@ -17,4 +17,4 @@ RUN echo 'npm install --production' >> /boot.sh
 CMD sh /boot.sh && npm start
 
 #On the first build you must migrate / seed. Uncomment in Dockerfile:
-#RUN echo 'npm run dbreload' >> /boot.sh
+RUN echo 'npm run dbreload' >> /boot.sh

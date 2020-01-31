@@ -1,6 +1,4 @@
 let query = `
-SET search_path TO public;
-
   CREATE TABLE if not exists document (
       id integer NOT NULL,
       user_id text,
@@ -8,7 +6,7 @@ SET search_path TO public;
       category text,
       tags text,
       approved text,
-      vote integer
+      vote int
   );
 
  /* id,user_id,img_url,category,tags,approved

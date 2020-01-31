@@ -1,4 +1,6 @@
 let query = `
+SET search_path TO public;
+
   CREATE TABLE if not exists users (
       id integer NOT NULL,
       password text

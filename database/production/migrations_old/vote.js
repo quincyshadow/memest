@@ -1,21 +1,18 @@
 let query = `
-SET search_path TO public;
-
-  CREATE TABLE if not exists document (
+  CREATE TABLE if not exists vote (
       id integer NOT NULL,
-      user_id text,
-      img_url text,
-      category text,
-      tags text,
-      approved text,
+      document_id integer,
+      user_id integer,
+      ipaddr text,
+      didVote text,
       vote integer
   );
 
- /* id,user_id,img_url,category,tags,approved
+ /* id,category,title,tags,thumbUrl,fullSzUrl
     int,string*****
  */
 
-  CREATE SEQUENCE document_id_seq
+  CREATE SEQUENCE vote_id_seq
       AS integer
       START WITH 1
       INCREMENT BY 1
@@ -23,12 +20,12 @@ SET search_path TO public;
       NO MAXVALUE
       CACHE 1;
 
-  ALTER SEQUENCE document_id_seq OWNED BY document.id;
+  ALTER SEQUENCE vote_id_seq OWNED BY vote.id;
 
-  ALTER TABLE ONLY document ALTER COLUMN id SET DEFAULT nextval('document_id_seq'::regclass);
+  ALTER TABLE ONLY vote ALTER COLUMN id SET DEFAULT nextval('vote_id_seq'::regclass);
 
-  ALTER TABLE ONLY document
-  ADD CONSTRAINT document_pkey PRIMARY KEY (id);
+  ALTER TABLE ONLY vote
+  ADD CONSTRAINT vote_pkey PRIMARY KEY (id);
 `
 
 // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);

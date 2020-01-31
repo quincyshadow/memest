@@ -1,21 +1,15 @@
 let query = `
-SET search_path TO public;
-
-  CREATE TABLE if not exists document (
+  CREATE TABLE if not exists guestusers (
       id integer NOT NULL,
-      user_id text,
-      img_url text,
-      category text,
-      tags text,
-      approved text,
-      vote integer
+      ipaddr text,
+      has_voted text
   );
 
- /* id,user_id,img_url,category,tags,approved
+ /* id,ipaddr,has_voted
     int,string*****
  */
 
-  CREATE SEQUENCE document_id_seq
+  CREATE SEQUENCE guestusers_id_seq
       AS integer
       START WITH 1
       INCREMENT BY 1
@@ -23,12 +17,12 @@ SET search_path TO public;
       NO MAXVALUE
       CACHE 1;
 
-  ALTER SEQUENCE document_id_seq OWNED BY document.id;
+  ALTER SEQUENCE guestusers_id_seq OWNED BY guestusers.id;
 
-  ALTER TABLE ONLY document ALTER COLUMN id SET DEFAULT nextval('document_id_seq'::regclass);
+  ALTER TABLE ONLY guestusers ALTER COLUMN id SET DEFAULT nextval('guestusers_id_seq'::regclass);
 
-  ALTER TABLE ONLY document
-  ADD CONSTRAINT document_pkey PRIMARY KEY (id);
+  ALTER TABLE ONLY guestusers
+  ADD CONSTRAINT guestusers_pkey PRIMARY KEY (id);
 `
 
 // ALTER TABLE ONLY public.doctor ALTER COLUMN id SET DEFAULT nextval('public.doctor_id_seq'::regclass);
@@ -72,7 +66,7 @@ exports.up = function(knex, Promise)
 ////////////////////////////////
 
 let drop = `
-DROP TABLE vote CASCADE;
+DROP TABLE guestusers CASCADE;
 `
 drop = drop.replace(/\n/g, '').replace(/\t/g, ' ');
 

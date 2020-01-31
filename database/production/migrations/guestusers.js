@@ -1,4 +1,6 @@
 let query = `
+SET search_path TO public;
+
   CREATE TABLE if not exists guestusers (
       id integer NOT NULL,
       ipaddr text,
