@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "connect-session-knex": "^1.4.0",
-    "date-and-time": "^0.7.0",
+    "date-and-time": "^0.14.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
     "express-session": "^1.16.2",
