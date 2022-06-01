@@ -19,7 +19,7 @@
     "express-session": "^1.16.2",
     "knex": "^0.19.5",
     "pg": "^7.3.0",
-    "sharp": "^0.22.1"
+    "sharp": "^0.30.5"
   },
   "devDependencies": {
     "dotenv": "^8.0.0"
